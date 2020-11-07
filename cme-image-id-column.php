@@ -36,12 +36,11 @@ function caughtmyeye_add_image_id_column($columns) {
 add_filter('manage_media_columns', 'caughtmyeye_add_image_id_column');
  
 // Display the Image ID Column
-function caughtmyeye_show_image_id_column_content($value, $column_name, $image_id) {
+function caughtmyeye_show_image_id_column_content($column_name, $image_id) {
 	if ( 'image_id' == $column_name )
-		return $image_id;
-    return $value;
+		echo $image_id;
 }
-add_action('manage_media_custom_column',  'caughtmyeye_show_image_id_column_content', 10, 3);
+add_action('manage_media_custom_column',  'caughtmyeye_show_image_id_column_content', 10, 2);
 
 // Support Sorting
 function caughtmyeye_sortable_image_id_column( $columns ) {
@@ -52,4 +51,4 @@ function caughtmyeye_sortable_image_id_column( $columns ) {
  
     return $columns;
 }
-add_filter( 'manage_media_sortable_columns', 'caughtmyeye_sortable_users_id_column' );
+add_filter( 'manage_upload_sortable_columns', 'caughtmyeye_sortable_image_id_column' );
